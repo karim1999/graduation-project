@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('from_address_id')->constrained('addresses')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('to_address_id')->constrained('addresses')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('vendor_id')->constrained(config('admin.database.users_table'))->cascadeOnDelete()->cascadeOnUpdate();
+            $table->float('total', 5, 2);
+            $table->string('status')->default('PENDING');
             $table->timestamps();
         });
     }

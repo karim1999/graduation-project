@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('boxes', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('img')->nullable();
+            $table->float('width', 5, 2);
+            $table->float('height', 5, 2);
+            $table->float('length', 5, 2);
+            $table->float('weight', 5, 2);
             $table->timestamps();
         });
     }

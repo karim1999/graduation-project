@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('order_boxes', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('order_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('box_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->integer('quantity')->default(1);
+
             $table->timestamps();
         });
     }
