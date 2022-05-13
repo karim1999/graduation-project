@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('order_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->integer('rate')->default(5);
+            $table->text('description')->nullable();
+            $table->string('status')->default('PENDING');
             $table->timestamps();
         });
     }
