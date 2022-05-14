@@ -1,11 +1,9 @@
 import React, {useState} from 'react';
-import './home.css';
 import homeImages from '../assets/imagePaths';
 import Partner from '../assets/assetsHome/partner.png';
 import FreeShippingPana from '../assets/assetsHome/Free-shipping-pana.png';
 import feelFree from '../assets/assetsHome/feell-free.png';
 import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.min.css';
 import { useFormik } from 'formik';
 import {Inertia} from "@inertiajs/inertia";
 
@@ -137,7 +135,7 @@ const Home = ({nextStep}) => {
                 <div className="over-boxes__item">
                     <div className="over-boxes__item__icon">
                         <img
-                            src={require('../assets/assetsHome/box-call.svg')}
+                            src={homeImages.boxCall}
                             alt="box-call"
                         />
                     </div>

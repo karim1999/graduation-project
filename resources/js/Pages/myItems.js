@@ -27,7 +27,7 @@ const MyItems = ({ nextStep, boxes, fromAddress, toAddress, pickDate }) => {
                 <Button className="btnNext" variant="dark" onClick={Continue}>
                     Continue
                 </Button>
-                <Boxs items={items} setCount={setCount} />
+                <Boxs boxes={boxes} items={items} setCount={setCount} />
             </div>
             <SecondFooter />
         </>

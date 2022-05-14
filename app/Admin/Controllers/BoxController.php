@@ -71,12 +71,12 @@ class BoxController extends AdminController
     {
         $form = new Form(new Box());
 
-        $form->text('name', __('Name'));
-        $form->image('img', __('Img'));
-        $form->decimal('width', __('Width'));
-        $form->decimal('height', __('Height'));
-        $form->decimal('length', __('Length'));
-        $form->decimal('weight', __('Weight'));
+        $form->text('name', __('Name'))->required();
+        $form->image('img', __('Img'))->required();
+        $form->decimal('width', __('Width'))->required();
+        $form->decimal('height', __('Height'))->required();
+        $form->decimal('length', __('Length'))->required();
+        $form->decimal('weight', __('Weight'))->required();
 
         return $form;
     }

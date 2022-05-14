@@ -484,3 +484,6 @@ footer div:nth-last-child(1) {
   padding-left: 20px;
 }
 /*# sourceMappingURL=main.css.map */
+img {
+    display: unset;
+}

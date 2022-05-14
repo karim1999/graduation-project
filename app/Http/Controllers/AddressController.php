@@ -18,7 +18,7 @@ class AddressController extends Controller
             "fromAddress" => $fromAddress,
             "toAddress" => $toAddress,
             "pickDate" => $pickDate,
-            "nextStep" => $pickDate,
+            "nextStep" => route('vendors.index'),
         ]);
     }
 }

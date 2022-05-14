@@ -9,10 +9,16 @@ import backArrow from '../assets/backArrow.svg';
 import {Inertia} from "@inertiajs/inertia";
 import {useFormik} from "formik";
 
-const Location = ({nextStep}) => {
+const Location = ({nextStep, fromAddress, toAddress, pickDate, items}) => {
     const onSubmit = (values, { setSubmitting }) => {
         console.log(values)
-        // Inertia.post(nextStep, values);
+        Inertia.post(nextStep, {
+            items,
+            fromAddress: values.fromAddress,
+            toAddress: values.toAddress,
+            description: values.description,
+            pickDate,
+        });
     };
     const addressForm = useFormik({
         initialValues: {
@@ -51,8 +57,6 @@ const Location = ({nextStep}) => {
                 }
             },
             description: "",
-            email: "",
-            phone: "",
         },
         onSubmit,
     });
@@ -77,10 +81,10 @@ const Location = ({nextStep}) => {
                 </Row>
                 <Row className="mt-5" style={{ margin: '0 -15px', padding: '20px' }}>
                     <Col xs={6} sm={4}>
-                        <Button onClick={Back} style={styleBtns.btnShadow} variant="light">
-                            <img className="pe-3" src={backArrow} alt="backArrow" /> Back To
-                            Inventory
-                        </Button>
+                        {/*<Button onClick={Back} style={styleBtns.btnShadow} variant="light">*/}
+                        {/*    <img className="pe-3" src={backArrow} alt="backArrow" /> Back To*/}
+                        {/*    Inventory*/}
+                        {/*</Button>*/}
                     </Col>
                     <Col xs={6} sm={{ span: 4, offset: 4 }}>
                         <Button

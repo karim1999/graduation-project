@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\BoxController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\VendorController;
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +20,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::match(['get', 'post'], '/boxes', [BoxController::class, 'index'])->name('boxes.index');
-Route::match(['get', 'post'], '/vendors', [VendorController::class, 'index'])->name('vendors.index');
-Route::match(['get', 'post'], '/addresses', [AddressController::class, 'index'])->name('addresses.index');
+
+Route::middleware(['auth', 'verified'])->group(function (){
+    Route::get('/dashboard', function () {
+        return Inertia::render('Dashboard');
+    })->middleware(['auth', 'verified'])->name('dashboard');
+    Route::match(['get', 'post'], '/boxes', [BoxController::class, 'index'])->name('boxes.index');
+    Route::match(['get', 'post'], '/vendors', [VendorController::class, 'index'])->name('vendors.index');
+    Route::match(['get', 'post'], '/addresses', [AddressController::class, 'index'])->name('addresses.index');
+    Route::match(['get', 'post'], '/checkout', [CheckoutController::class, 'index']);
+});
+
+require __DIR__.'/auth.php';

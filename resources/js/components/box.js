@@ -4,10 +4,10 @@ import classes from './box.module.css';
 import decreaseBtn from '../assets/decreaseBtn.svg';
 import increaseBtn from '../assets/increaseBtn.svg';
 
-const Box = ({ name, size, count, setCount }) => {
+const Box = ({ name, size, image_url, count, setCount }) => {
     return (
         <div className={classes.box}>
-            <img src={boxIcon} alt="box" />
+            <img src={image_url} alt="box" />
             <h4>{name}</h4>
             <small>{size}</small>
             <div className={classes.btns}>
