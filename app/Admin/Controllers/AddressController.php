@@ -32,7 +32,6 @@ class AddressController extends AdminController
             $grid->disableBatchActions();
             $grid->disableCreateButton();
             $grid->disableActions();
-            $grid->model()->where('email', Admin::user()->id);
         }
         $grid->column('id', __('Id'));
         $grid->column('country', __('Country'));
