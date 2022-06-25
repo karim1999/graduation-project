@@ -22,7 +22,7 @@ return [
     | `img` tag, eg '<img src="http://logo-url" alt="Admin logo">'.
     |
     */
-    'logo' => '<b>Graduation</b> project',
+    'logo' => '<b>Movers</b> marketplace',
 
     /*
     |--------------------------------------------------------------------------
@@ -34,7 +34,7 @@ return [
     | '<img src="http://logo-url" alt="Admin logo">'.
     |
     */
-    'logo-mini' => '<b>GP</b>',
+    'logo-mini' => '<b>MM</b>',
 
     /*
     |--------------------------------------------------------------------------
@@ -289,7 +289,7 @@ return [
     | "sidebar-mini".
     |
     */
-    'layout' => ['sidebar-mini', 'sidebar-collapse'],
+    'layout' => ['fixed'],
 
     /*
     |--------------------------------------------------------------------------

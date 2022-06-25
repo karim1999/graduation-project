@@ -4,12 +4,14 @@ namespace App\Admin\Controllers;
 
 use App\Models\User;
 use Encore\Admin\Controllers\AdminController;
+use Encore\Admin\Facades\Admin;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
 
 class UserController extends AdminController
 {
+    public bool $isVendor = false;
     /**
      * Title for current resource.
      *
@@ -24,7 +26,13 @@ class UserController extends AdminController
      */
     protected function grid()
     {
+        $this->isVendor= Admin::user()->isRole('vendor');
         $grid = new Grid(new User());
+        if($this->isVendor){
+            $grid->disableBatchActions();
+            $grid->disableCreateButton();
+            $grid->disableActions();
+        }
 
         $grid->column('id', __('Id'));
         $grid->column('name', __('Name'));

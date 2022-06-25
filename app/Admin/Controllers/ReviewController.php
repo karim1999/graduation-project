@@ -4,12 +4,14 @@ namespace App\Admin\Controllers;
 
 use App\Models\Review;
 use Encore\Admin\Controllers\AdminController;
+use Encore\Admin\Facades\Admin;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
 
 class ReviewController extends AdminController
 {
+    public bool $isVendor = false;
     /**
      * Title for current resource.
      *
@@ -24,7 +26,16 @@ class ReviewController extends AdminController
      */
     protected function grid()
     {
+        $this->isVendor= Admin::user()->isRole('vendor');
         $grid = new Grid(new Review());
+        if($this->isVendor){
+            $grid->disableBatchActions();
+            $grid->disableCreateButton();
+            $grid->disableActions();
+            $grid->model()->whereHas('order', function ($query){
+                return $query->where('vendor_id', Admin::user()->id);
+            });
+        }
 
         $grid->column('id', __('Id'));
         $grid->column('order_id', __('Order id'));
