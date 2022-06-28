@@ -38,12 +38,13 @@ class OrderSeeder extends Seeder
             for ($j= 1; $j <=3; $j++){
                 $qty = rand(1, 10);
                 $boxId = rand(1, 4);
+                $vendorPrice = BoxPrice::where('vendor_id', $i)->where('box_id', (int)$boxId)->get()->first();
                 $orderBox = OrderBox::create([
+                    "box_price_id" => $vendorPrice->id,
                     "order_id" => $order->id,
                     "quantity" => $qty,
                     "box_id" => $boxId,
                 ]);
-                $vendorPrice = BoxPrice::where('vendor_id', $i)->where('box_id', (int)$boxId)->get()->first();
                 $total+= $qty*$vendorPrice->price;
             }
             $order->total = $total;

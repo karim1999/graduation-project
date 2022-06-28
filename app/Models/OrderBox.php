@@ -10,6 +10,9 @@ class OrderBox extends Model
     use HasFactory;
     protected $guarded= [];
 
+    public function box_price(){
+        return $this->belongsTo(BoxPrice::class, 'box_price_id');
+    }
     public function box(){
         return $this->belongsTo(Box::class);
     }

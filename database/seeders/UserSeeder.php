@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
             $user = User::create([
                 'email' => "customer".$i."@gmail.com",
                 'name' => "customer".$i,
-                'password' => \Hash::make("customer".$i),
+                'password' => "customer".$i,
             ]);
             for ($j = 1; $j <= 3; $j++) {
                 $faker = \Faker\Factory::create();

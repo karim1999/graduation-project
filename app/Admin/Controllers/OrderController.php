@@ -81,7 +81,7 @@ class OrderController extends AdminController
 
             $box->id();
             $box->column('box.name');
-            $box->column('box.price');
+            $box->column('box_price.price');
             $box->quantity();
         });
         return $show;
