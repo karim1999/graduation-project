@@ -71,12 +71,12 @@ class UserController extends AdminController
     {
         $form = new Form(new User());
 
-        $form->text('name', __('Name'));
-        $form->email('email', __('Email'));
-        $form->datetime('email_verified_at', __('Email verified at'))->default(date('Y-m-d H:i:s'));
-        $form->password('password', __('Password'));
-        $form->text('remember_token', __('Remember token'));
+        $form->text('name', __('Name'))->required();
+        $form->email('email', __('Email'))->required()->rules('unique:users,email,{{id}}');
+        $form->password('password', __('Password'))->creationRules('required|confirmed');
+        $form->password('password_confirmation', trans('admin.password_confirmation'))->creationRules('required')->updateRules('required_with:password');
 
+        $form->ignore(['password_confirmation']);
         return $form;
     }
 }

@@ -28,11 +28,10 @@ class AddressController extends AdminController
     {
         $this->isVendor= Admin::user()->isRole('vendor');
         $grid = new Grid(new Address());
-        if($this->isVendor){
-            $grid->disableBatchActions();
-            $grid->disableCreateButton();
-            $grid->disableActions();
-        }
+        $grid->disableBatchActions();
+        $grid->disableCreateButton();
+        $grid->disableActions();
+
         $grid->column('id', __('Id'));
         $grid->column('country', __('Country'));
         $grid->column('city', __('City'));
@@ -82,12 +81,12 @@ class AddressController extends AdminController
     {
         $form = new Form(new Address());
 
-        $form->text('country', __('Country'));
-        $form->text('city', __('City'));
-        $form->text('state', __('State'));
-        $form->text('address', __('Address'));
-        $form->text('lat', __('Lat'));
-        $form->text('lng', __('Lng'));
+        $form->text('country', __('Country'))->required();
+        $form->text('city', __('City'))->required();
+        $form->text('state', __('State'))->required();
+        $form->text('address', __('Address'))->required();
+        $form->text('lat', __('Lat'))->required();
+        $form->text('lng', __('Lng'))->required();
         $form->text('addressable_type', __('Addressable type'));
         $form->number('addressable_id', __('Addressable id'));
 

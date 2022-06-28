@@ -28,10 +28,10 @@ class ReviewController extends AdminController
     {
         $this->isVendor= Admin::user()->isRole('vendor');
         $grid = new Grid(new Review());
+        $grid->disableBatchActions();
+        $grid->disableCreateButton();
+        $grid->disableActions();
         if($this->isVendor){
-            $grid->disableBatchActions();
-            $grid->disableCreateButton();
-            $grid->disableActions();
             $grid->model()->whereHas('order', function ($query){
                 return $query->where('vendor_id', Admin::user()->id);
             });

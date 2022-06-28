@@ -29,10 +29,10 @@ class OrderController extends AdminController
         $this->isVendor= Admin::user()->isRole('vendor');
 
         $grid = new Grid(new Order());
+        $grid->disableBatchActions();
+        $grid->disableCreateButton();
+        $grid->disableActions();
         if($this->isVendor){
-            $grid->disableBatchActions();
-            $grid->disableCreateButton();
-            $grid->disableActions();
             $grid->model()->where('vendor_id', Admin::user()->id);
         }
 
