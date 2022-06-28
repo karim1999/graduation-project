@@ -31,8 +31,8 @@ class OrderController extends AdminController
         $grid = new Grid(new Order());
         $grid->disableBatchActions();
         $grid->disableCreateButton();
-        $grid->disableActions();
         if($this->isVendor){
+            $grid->disableActions();
             $grid->model()->where('vendor_id', Admin::user()->id);
         }
 
@@ -42,7 +42,11 @@ class OrderController extends AdminController
         $grid->column('to_address.address', __('To address'));
         $grid->column('vendor.username', __('Vendor'));
         $grid->column('total', __('Total'))->label();
-        $grid->column('status', __('Status'))->label('primary');
+        $grid->column('status', __('Status'))->label([
+            "PENDING" => 'default',
+            "REJECTED" => 'danger',
+            "APPROVED" => 'success',
+        ]);
         $grid->column('created_at', __('Created at'))->diffForHumans();
         $grid->column('updated_at', __('Updated at'))->diffForHumans();
 
@@ -60,15 +64,27 @@ class OrderController extends AdminController
         $show = new Show(Order::findOrFail($id));
 
         $show->field('id', __('Id'));
-        $show->field('user_id', __('User id'));
-        $show->field('from_address_id', __('From address id'));
-        $show->field('to_address_id', __('To address id'));
-        $show->field('vendor_id', __('Vendor id'));
+        $show->field('user.name', __('User name'));
+        $show->field('user.email', __('User Email'));
+        $show->field('from_address.formatted', __('From address'));
+        $show->field('to_address.formatted', __('To address'));
+        $show->field('vendor.username', __('Vendor name'));
         $show->field('total', __('Total'));
         $show->field('status', __('Status'));
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
+        $show->boxes('Boxes', function ($box) {
+            $box->disableBatchActions();
+            $box->disableCreateButton();
+            $box->disableActions();
 
+            $box->setResource('/admin/order_boxes');
+
+            $box->id();
+            $box->column('box.name');
+            $box->column('box.price');
+            $box->quantity();
+        });
         return $show;
     }
 
@@ -81,12 +97,11 @@ class OrderController extends AdminController
     {
         $form = new Form(new Order());
 
-        $form->number('user_id', __('User id'));
-        $form->number('from_address_id', __('From address id'));
-        $form->number('to_address_id', __('To address id'));
-        $form->number('vendor_id', __('Vendor id'));
-        $form->decimal('total', __('Total'));
-        $form->text('status', __('Status'))->default('PENDING');
+        $form->select('status', __('Status'))->options([
+            'PENDING' => 'PENDING',
+            'APPROVED' => 'APPROVED',
+            'REJECTED' => 'REJECTED',
+        ]);
 
         return $form;
     }

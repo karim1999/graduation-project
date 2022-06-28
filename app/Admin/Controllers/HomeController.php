@@ -66,7 +66,7 @@ class HomeController extends Controller
                     if($this->isVendor){
                         $orders = $orders->where('vendor_id', Admin::user()->id);
                     }
-                    $rows = $orders->limit(6)->latest()->get()->toArray();
+                    $rows = $orders->limit(6)->latest()->get(['id', 'total', 'status', 'created_at'])->toArray();
 
                     $table = new Table($headers, $rows);
                     $box = new \Encore\Admin\Widgets\Box('Latest Orders', $table);
