@@ -172,7 +172,7 @@ class AdminTablesSeeder extends Seeder
                     "name" => "Orders",
                     "slug" => "orders",
                     "http_method" => "",
-                    "http_path" => "/orders"
+                    "http_path" => "/orders*"
                 ],
                 [
                     "name" => "Reviews",

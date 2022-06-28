@@ -32,7 +32,6 @@ class OrderController extends AdminController
         $grid->disableBatchActions();
         $grid->disableCreateButton();
         if($this->isVendor){
-            $grid->disableActions();
             $grid->model()->where('vendor_id', Admin::user()->id);
         }
 
