@@ -30,8 +30,8 @@ class ReviewController extends AdminController
         $grid = new Grid(new Review());
         $grid->disableBatchActions();
         $grid->disableCreateButton();
-        $grid->disableActions();
         if($this->isVendor){
+            $grid->disableActions();
             $grid->model()->whereHas('order', function ($query){
                 return $query->where('vendor_id', Admin::user()->id);
             });
@@ -41,7 +41,11 @@ class ReviewController extends AdminController
         $grid->column('order_id', __('Order id'));
         $grid->column('rate', __('Rate'));
         $grid->column('description', __('Description'));
-        $grid->column('status', __('Status'))->label();
+        $grid->column('status', __('Status'))->label([
+            "PENDING" => 'default',
+            "REJECTED" => 'danger',
+            "APPROVED" => 'success',
+        ]);
         $grid->column('created_at', __('Created at'))->diffForHumans();
         $grid->column('updated_at', __('Updated at'))->diffForHumans();
 
@@ -78,10 +82,11 @@ class ReviewController extends AdminController
     {
         $form = new Form(new Review());
 
-        $form->number('order_id', __('Order id'));
-        $form->number('rate', __('Rate'))->default(5);
-        $form->textarea('description', __('Description'));
-        $form->text('status', __('Status'))->default('PENDING');
+        $form->select('status', __('Status'))->options([
+            'PENDING' => 'PENDING',
+            'APPROVED' => 'APPROVED',
+            'REJECTED' => 'REJECTED',
+        ]);
 
         return $form;
     }

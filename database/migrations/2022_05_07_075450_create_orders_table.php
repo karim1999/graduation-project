@@ -19,7 +19,8 @@ return new class extends Migration
             $table->foreignId('from_address_id')->constrained('addresses')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('to_address_id')->constrained('addresses')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('vendor_id')->constrained(config('admin.database.users_table'))->cascadeOnDelete()->cascadeOnUpdate();
-            $table->float('total', 5, 2);
+            $table->double('total');
+            $table->double('distance');
             $table->timestamp('pick_date')->nullable();
             $table->timestamp('ship_date')->nullable();
             $table->string('status')->default('PENDING');
