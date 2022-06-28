@@ -18,9 +18,8 @@ class ReviewSeeder extends Seeder
     {
         $faker = \Faker\Factory::create();
         for ($i = 1; $i <= 5; $i++) {
-            $order = Order::find($i);
             $review = Review::create([
-                "order_id" => $order->id,
+                "order_id" => $i,
                 "description" => $faker->text,
                 "rate" => rand(1,5),
                 "status" => "PENDING",

@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use App\Models\Box;
 use App\Models\BoxPrice;
 use App\Models\Order;
+use App\Models\OrderBox;
+use App\Models\Review;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
@@ -18,7 +20,8 @@ class OrderSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 1; $i <= 5; $i++) {
+        $faker = \Faker\Factory::create();
+        for ($i = 2; $i <= 5; $i++) {
             $user = User::find($i);
             $addresses = $user->addresses;
             $order = Order::create([
@@ -30,6 +33,26 @@ class OrderSeeder extends Seeder
                 "distance" => rand(1000,2000),
                 "status" => "PENDING",
                 "ship_date" => Carbon::now(),
+            ]);
+            $total = 0;
+            for ($j= 1; $j <=3; $j++){
+                $qty = rand(1, 10);
+                $boxId = rand(1, 4);
+                $orderBox = OrderBox::create([
+                    "order_id" => $order->id,
+                    "quantity" => $qty,
+                    "box_id" => $boxId,
+                ]);
+                $vendorPrice = BoxPrice::where('vendor_id', $i)->where('box_id', (int)$boxId)->get()->first();
+                $total+= $qty*$vendorPrice->price;
+            }
+            $order->total = $total;
+            $order->save();
+            $review = Review::create([
+                "order_id" => $order->id,
+                "description" => $faker->text,
+                "rate" => rand(1,5),
+                "status" => "PENDING",
             ]);
         }
     }
