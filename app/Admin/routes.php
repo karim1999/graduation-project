@@ -15,7 +15,7 @@ Route::group([
     $router->resource('boxes', BoxController::class);
     $router->resource('prices', BoxPriceController::class);
     $router->resource('users', UserController::class);
-    $router->resource('addresses', AddressController::class);
+//    $router->resource('addresses', AddressController::class);
     $router->resource('orders', OrderController::class);
     $router->resource('reviews', ReviewController::class);
 });

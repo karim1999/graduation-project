@@ -93,14 +93,6 @@ class AdminTablesSeeder extends Seeder
                 [
                     "parent_id" => 0,
                     "order" => 10,
-                    "title" => "Addresses",
-                    "icon" => "fa-list",
-                    "uri" => "addresses",
-                    "permission" => "addresses"
-                ],
-                [
-                    "parent_id" => 0,
-                    "order" => 10,
                     "title" => "Orders",
                     "icon" => "fa-list",
                     "uri" => "orders",

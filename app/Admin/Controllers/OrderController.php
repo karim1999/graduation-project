@@ -37,14 +37,14 @@ class OrderController extends AdminController
         }
 
         $grid->column('id', __('Id'));
-        $grid->column('user_id', __('User id'));
-        $grid->column('from_address_id', __('From address id'));
-        $grid->column('to_address_id', __('To address id'));
-        $grid->column('vendor_id', __('Vendor id'));
-        $grid->column('total', __('Total'));
-        $grid->column('status', __('Status'));
-        $grid->column('created_at', __('Created at'));
-        $grid->column('updated_at', __('Updated at'));
+        $grid->column('user.name', __('User name'));
+        $grid->column('from_address.address', __('From address'));
+        $grid->column('to_address.address', __('To address'));
+        $grid->column('vendor.username', __('Vendor'));
+        $grid->column('total', __('Total'))->label();
+        $grid->column('status', __('Status'))->label('primary');
+        $grid->column('created_at', __('Created at'))->diffForHumans();
+        $grid->column('updated_at', __('Updated at'))->diffForHumans();
 
         return $grid;
     }

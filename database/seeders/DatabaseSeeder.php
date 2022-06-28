@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             AdminTablesSeeder::class,
             BoxSeeder::class,
             VendorSeeder::class,
+            UserSeeder::class,
         ]);
     }
 }

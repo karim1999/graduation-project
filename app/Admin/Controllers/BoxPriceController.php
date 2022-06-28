@@ -18,7 +18,7 @@ class BoxPriceController extends AdminController
      *
      * @var string
      */
-    protected $title = 'BoxPrice';
+    protected $title = 'Rates';
 
     /**
      * Make a grid builder.
@@ -33,6 +33,9 @@ class BoxPriceController extends AdminController
         $grid->column('id', __('Id'));
         if(!$this->isVendor) {
             $grid->column('vendor.username', __('Vendor username'));
+        }
+        if($this->isVendor) {
+            $grid->model()->where('vendor_id', Admin::user()->id);
         }
         $grid->column('box.name', __('Box name'));
         $grid->column('price', __('Price'))->label();

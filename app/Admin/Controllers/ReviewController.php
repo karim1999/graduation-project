@@ -41,9 +41,9 @@ class ReviewController extends AdminController
         $grid->column('order_id', __('Order id'));
         $grid->column('rate', __('Rate'));
         $grid->column('description', __('Description'));
-        $grid->column('status', __('Status'));
-        $grid->column('created_at', __('Created at'));
-        $grid->column('updated_at', __('Updated at'));
+        $grid->column('status', __('Status'))->label();
+        $grid->column('created_at', __('Created at'))->diffForHumans();
+        $grid->column('updated_at', __('Updated at'))->diffForHumans();
 
         return $grid;
     }
