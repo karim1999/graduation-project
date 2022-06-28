@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Box extends Model
 {
     use HasFactory;
+    protected $guarded= [];
     protected $appends = [
         'size',
         'image_url'

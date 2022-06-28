@@ -77,6 +77,15 @@ class UserController extends AdminController
         $form->password('password_confirmation', trans('admin.password_confirmation'))->creationRules('required')->updateRules('required_with:password');
 
         $form->ignore(['password_confirmation']);
+
+        $form->morphMany('addresses', function (Form\NestedForm $form) {
+            $form->text('country', __('Country'));
+            $form->text('city', __('City'));
+            $form->text('state', __('State'));
+            $form->text('address', __('Address'));
+            $form->decimal('lat', __('Lat'));
+            $form->decimal('lng', __('Lng'));
+        });
         return $form;
     }
 }
