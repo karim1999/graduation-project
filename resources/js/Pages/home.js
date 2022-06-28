@@ -16,7 +16,7 @@ const Home = ({nextStep}) => {
         initialValues: {
             fromAddress: "",
             toAddress: "",
-            pickDate: "",
+            pickDate: null,
         },
         onSubmit,
     });
@@ -51,7 +51,7 @@ const Home = ({nextStep}) => {
                     <span></span>
                 </div>
             </nav>
-            <header className="header">
+            <header className="header" style={{display: 'flex', alignItems: 'center', paddingTop: 0}}>
                 <div className="header__content">
                     <h1>Get Your Stuff Moved Out</h1>
                     <p>
@@ -64,28 +64,30 @@ const Home = ({nextStep}) => {
                     </p>
                 </div>
                 <form className="header__form" onSubmit={mainForm.handleSubmit}>
-                    <label>From</label>
-                    <input
-                        className="header__form__input icon-location"
-                        placeholder="1236 Mohamed ALi St, Faysal, Giza, Egypt"
-                        type="text"
-                        name="fromAddress"
-                        onChange={mainForm.handleChange}
-                        value={mainForm.values.fromAddress}
-                    />
-                    <label>to</label>
-                    <input
-                        className="header__form__input icon-location"
-                        placeholder="1236 Mohamed ALi St, Faysal, Giza, Egypt"
-                        type="text"
-                        name="toAddress"
-                        onChange={mainForm.handleChange}
-                        value={mainForm.values.toAddress}
-                    />
+                    {/*<label>From</label>*/}
+                    {/*<input*/}
+                    {/*    className="header__form__input icon-location"*/}
+                    {/*    placeholder="1236 Mohamed ALi St, Faysal, Giza, Egypt"*/}
+                    {/*    type="text"*/}
+                    {/*    name="fromAddress"*/}
+                    {/*    onChange={mainForm.handleChange}*/}
+                    {/*    value={mainForm.values.fromAddress}*/}
+                    {/*/>*/}
+                    {/*<label>to</label>*/}
+                    {/*<input*/}
+                    {/*    className="header__form__input icon-location"*/}
+                    {/*    placeholder="1236 Mohamed ALi St, Faysal, Giza, Egypt"*/}
+                    {/*    type="text"*/}
+                    {/*    name="toAddress"*/}
+                    {/*    onChange={mainForm.handleChange}*/}
+                    {/*    value={mainForm.values.toAddress}*/}
+                    {/*/>*/}
                     <label>Date</label>
                     <DatePicker className="header__form__input icon-date"
+                                wrapperClassName="mb-5"
                                 onChange={e => mainForm.setFieldValue('pickDate', e)}
                                 name="pickDate"
+                                placeholderText="Please select a date"
                                 selected={mainForm.values.pickDate}
                                 />
                     <button className="header__form__btn primary-btn" type="submit">

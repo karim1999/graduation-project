@@ -113,6 +113,14 @@ class AdminTablesSeeder extends Seeder
                     "icon" => "fa-list",
                     "uri" => "reviews",
                     "permission" => "reviews"
+                ],
+                [
+                    "parent_id" => 0,
+                    "order" => 10,
+                    "title" => "Prices",
+                    "icon" => "fa-list",
+                    "uri" => "prices",
+                    "permission" => NULL
                 ]
             ]
         );
@@ -179,6 +187,12 @@ class AdminTablesSeeder extends Seeder
                     "slug" => "reviews",
                     "http_method" => "",
                     "http_path" => "/reviews"
+                ],
+                [
+                    "name" => "Prices",
+                    "slug" => "prices",
+                    "http_method" => "",
+                    "http_path" => "/prices*"
                 ]
             ]
         );
@@ -238,6 +252,10 @@ class AdminTablesSeeder extends Seeder
                 [
                     "role_id" => 2,
                     "permission_id" => 10
+                ],
+                [
+                    "role_id" => 2,
+                    "permission_id" => 11
                 ]
             ]
         );

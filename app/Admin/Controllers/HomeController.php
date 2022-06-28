@@ -55,7 +55,7 @@ class HomeController extends Controller
 
                 $row->column(3, function (Column $column) {
                     $boxes = Box::query();
-                    $infoBox = new InfoBox('Boxes', 'users', 'yellow', '/admin/bixes', $boxes->count());
+                    $infoBox = new InfoBox('Boxes', 'users', 'yellow', '/admin/boxes', $boxes->count());
                     $column->append($infoBox);
                 });
             })->row(function (Row $row) {

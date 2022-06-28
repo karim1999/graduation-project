@@ -13,6 +13,7 @@ Route::group([
 
     $router->get('/', 'HomeController@index')->name('home');
     $router->resource('boxes', BoxController::class);
+    $router->resource('prices', BoxPriceController::class);
     $router->resource('users', UserController::class);
     $router->resource('addresses', AddressController::class);
     $router->resource('orders', OrderController::class);
