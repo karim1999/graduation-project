@@ -10,7 +10,7 @@ import {Inertia} from "@inertiajs/inertia";
 
 const Compare = ({nextStep, fromAddress, toAddress, description, pickDate, items, prices, destination}) => {
     const onSubmit = (vendor_id, total) => {
-        Inertia.get(nextStep, {
+        let data = {
             vendor_id,
             total,
             items,
@@ -19,7 +19,9 @@ const Compare = ({nextStep, fromAddress, toAddress, description, pickDate, items
             description,
             destination,
             pickDate,
-        }, {replace: true});
+        }
+        const searchParams = new URLSearchParams(data);
+        window.location.href= nextStep+'?'+searchParams
     };
     const Back = (e) => {
         e.preventDefault();

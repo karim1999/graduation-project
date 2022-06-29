@@ -35,7 +35,7 @@ class VendorController extends Controller
 
         return Inertia::render('compare', [
             "prices" => $prices->values(),
-            "boxes" => $boxes,
+            "items" => $boxes,
             "fromAddress" => $fromAddress,
             "toAddress" => $toAddress,
             "description" => $description,

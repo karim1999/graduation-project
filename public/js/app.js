@@ -9636,7 +9636,7 @@ var Compare = function Compare(_ref) {
       destination = _ref.destination;
 
   var onSubmit = function onSubmit(vendor_id, total) {
-    _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_7__.Inertia.get(nextStep, {
+    var data = {
       vendor_id: vendor_id,
       total: total,
       items: items,
@@ -9645,9 +9645,9 @@ var Compare = function Compare(_ref) {
       description: description,
       destination: destination,
       pickDate: pickDate
-    }, {
-      replace: true
-    });
+    };
+    var searchParams = new URLSearchParams(data);
+    window.location.href = nextStep + '?' + searchParams;
   };
 
   var Back = function Back(e) {
