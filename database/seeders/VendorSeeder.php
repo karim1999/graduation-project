@@ -15,9 +15,10 @@ class VendorSeeder extends Seeder
      */
     public function run()
     {
+        $faker = \Faker\Factory::create();
         for ($i = 1; $i <= 5; $i++) {
             $vendor = \Encore\Admin\Auth\Database\Administrator::create([
-                'username' => "vendor".$i,
+                'username' => $faker->firstName,
                 'name' => "vendor".$i,
                 'avatar' => 'images/kompan.svg',
                 'password' => \Hash::make("vendor".$i),

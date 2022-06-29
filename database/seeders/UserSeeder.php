@@ -16,14 +16,14 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+        $faker = \Faker\Factory::create();
         for ($i = 1; $i <= 5; $i++) {
             $user = User::create([
-                'email' => "customer".$i."@gmail.com",
-                'name' => "customer".$i,
+                'email' => $faker->email,
+                'name' => $faker->name,
                 'password' => "customer".$i,
             ]);
             for ($j = 1; $j <= 3; $j++) {
-                $faker = \Faker\Factory::create();
                 $user->addresses()->create([
                     "country" => $faker->country,
                     "state" => $faker->city,
