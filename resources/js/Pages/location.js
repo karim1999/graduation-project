@@ -10,9 +10,9 @@ import {Inertia} from "@inertiajs/inertia";
 import {useFormik} from "formik";
 
 const Location = ({nextStep, fromAddress, toAddress, pickDate, items}) => {
+    console.log({items});
     const onSubmit = (values, { setSubmitting }) => {
-        console.log(values)
-        Inertia.post(nextStep, {
+        Inertia.get(nextStep, {
             items,
             fromAddress: values.fromAddress,
             toAddress: values.toAddress,

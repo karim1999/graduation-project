@@ -8,10 +8,10 @@ import {Inertia} from "@inertiajs/inertia";
 const MyItems = ({ nextStep, boxes, fromAddress, toAddress, pickDate }) => {
     const [items, setItems] = useState({});
     const Continue = (e) => {
-        Inertia.post(nextStep, {
+        Inertia.get(nextStep, {
             items,
-            fromAddress,
-            toAddress,
+            // fromAddress,
+            // toAddress,
             pickDate
         });
     };

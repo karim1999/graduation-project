@@ -28,7 +28,7 @@ Route::middleware(['auth', 'verified'])->group(function (){
     Route::match(['get', 'post'], '/boxes', [BoxController::class, 'index'])->name('boxes.index');
     Route::match(['get', 'post'], '/vendors', [VendorController::class, 'index'])->name('vendors.index');
     Route::match(['get', 'post'], '/addresses', [AddressController::class, 'index'])->name('addresses.index');
-    Route::match(['get', 'post'], '/checkout', [CheckoutController::class, 'index']);
+    Route::match(['get', 'post'], '/checkout', [CheckoutController::class, 'index'])->name('checkout');
 });
 
 require __DIR__.'/auth.php';

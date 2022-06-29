@@ -9,13 +9,13 @@ import {Inertia} from "@inertiajs/inertia";
 
 const Home = ({nextStep}) => {
     const onSubmit = (values, { setSubmitting }) => {
-        Inertia.post(nextStep, values);
+        Inertia.get(nextStep, values);
     };
 
     const mainForm = useFormik({
         initialValues: {
-            fromAddress: "",
-            toAddress: "",
+            // fromAddress: "",
+            // toAddress: "",
             pickDate: null,
         },
         onSubmit,
@@ -88,6 +88,7 @@ const Home = ({nextStep}) => {
                                 onChange={e => mainForm.setFieldValue('pickDate', e)}
                                 name="pickDate"
                                 placeholderText="Please select a date"
+                                minDate={new Date()}
                                 selected={mainForm.values.pickDate}
                                 />
                     <button className="header__form__btn primary-btn" type="submit">

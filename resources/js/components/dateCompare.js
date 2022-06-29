@@ -5,8 +5,7 @@ import './dateCompare.scss';
 import DatePicker from "react-datepicker";
 
 const DateCompare = ({value}) => {
-    const [date, setDate] = useState(new Date());
-    console.log({date});
+    const [date, setDate] = useState(new Date(value));
 
     return (
         <Col md={2}>

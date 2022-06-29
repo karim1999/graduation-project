@@ -7,14 +7,14 @@ import star from '../assets/star.svg';
 import old from '../assets/old.svg';
 import clean from '../assets/cleanLogo.svg';
 
-const Company = () => {
+const Company = ({total, vendor, prices, onSubmit}) => {
     return (
         <Row className="company mb-4">
             <Col md={3} className="comp__p1">
                 <img src={companyLogo} alt="company logo" />
                 <span className="comp__p1__moves">
-          moves
-          <p className="d-block fw-bold">+365</p>
+          {vendor.username}
+          <p className="d-block fw-bold">{vendor.email}</p>
         </span>
                 <div className="d-flex flex-row mt-4">
                     <div className="d-flex flex-column flex-fill facilities bg-white py-2 me-2 text-center">
@@ -92,20 +92,12 @@ const Company = () => {
                     </div>
                 </div>
             </Col>
-            <Col className="text-center" md={2}>
-        <span
-            style={{ color: 'var(--mentGreen)', textDecoration: 'line-through' }}
-        >
-          $563.25
-        </span>
-                <h4 style={{ color: '#F7444E', fontWeight: 'bold' }}>$549.99</h4>
-                <p style={{ color: '#F7444E' }}>4 trucks left</p>
+            <Col className="text-center d-flex flex-column align-items-center justify-content-center" md={2}>
+                <h4 style={{ color: '#F7444E', fontWeight: 'bold' }}>${total}</h4>
 
-                <a href="/checkout">
-                    <Button type="button" style={{ backgroundColor: '#0E3746' }} variant="dark">
-                        BOOK NOW
-                    </Button>
-                </a>
+                <Button onClick={() => onSubmit(vendor.id, total)} type="button" style={{ backgroundColor: '#0E3746' }} variant="dark">
+                    BOOK NOW
+                </Button>
             </Col>
         </Row>
     );

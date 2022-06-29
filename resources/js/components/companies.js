@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
 import Company from '../components/company';
 
-const Companies = () => {
-  const [companiesData] = useState([
-    { id: '1' },
-  ]);
+const Companies = ({prices, onSubmit}) => {
   return (
     <div>
-      {companiesData.map(({ id }) => (
-        <Company key={id} />
+      {prices.map(({prices, vendor, total}) => (
+        <Company key={vendor.id} prices={prices} total={total} vendor={vendor} onSubmit={onSubmit} />
       ))}
     </div>
   );

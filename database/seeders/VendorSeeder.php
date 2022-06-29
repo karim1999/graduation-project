@@ -19,6 +19,7 @@ class VendorSeeder extends Seeder
             $vendor = \Encore\Admin\Auth\Database\Administrator::create([
                 'username' => "vendor".$i,
                 'name' => "vendor".$i,
+                'avatar' => 'images/kompan.svg',
                 'password' => \Hash::make("vendor".$i),
             ]);
             $vendor->roles()->sync([2]);
@@ -27,7 +28,7 @@ class VendorSeeder extends Seeder
                 $boxPrice = BoxPrice::create([
                     'vendor_id' => $vendor->id,
                     'box_id' => $j,
-                    'price' => $box->width*(rand(10,100)/100),
+                    'price' => $box->width*(rand(1,10)/100),
                 ]);
             }
         }

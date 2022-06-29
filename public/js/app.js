@@ -9602,16 +9602,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Container.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Row.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Col.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Container.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Row.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Col.js");
 /* harmony import */ var _components_hrLine__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/hrLine */ "./resources/js/components/hrLine.js");
 /* harmony import */ var _compare_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./compare.scss */ "./resources/js/Pages/compare.scss");
 /* harmony import */ var _components_dateCompare__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/dateCompare */ "./resources/js/components/dateCompare.js");
 /* harmony import */ var _components_companies__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/companies */ "./resources/js/components/companies.js");
 /* harmony import */ var _components_secondFooter__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/secondFooter */ "./resources/js/components/secondFooter.js");
 /* harmony import */ var _assets_backArrow_svg__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../assets/backArrow.svg */ "./resources/js/assets/backArrow.svg");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
@@ -9627,45 +9629,66 @@ var Compare = function Compare(_ref) {
   var nextStep = _ref.nextStep,
       fromAddress = _ref.fromAddress,
       toAddress = _ref.toAddress,
+      description = _ref.description,
       pickDate = _ref.pickDate,
-      items = _ref.items;
+      items = _ref.items,
+      prices = _ref.prices,
+      destination = _ref.destination;
+
+  var onSubmit = function onSubmit(vendor_id, total) {
+    _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_7__.Inertia.get(nextStep, {
+      vendor_id: vendor_id,
+      total: total,
+      items: items,
+      fromAddress: fromAddress,
+      toAddress: toAddress,
+      description: description,
+      destination: destination,
+      pickDate: pickDate
+    }, {
+      replace: true
+    });
+  };
 
   var Back = function Back(e) {
     e.preventDefault();
   };
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
     className: "compare ",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
       className: "pt-4 px-5",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_11__["default"], {
           md: 6,
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("p", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
             className: "fw-bold mb-0",
             children: "Reserve your price, Pay later. Cancel for free."
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_hrLine__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_components_hrLine__WEBPACK_IMPORTED_MODULE_1__["default"], {
             width: "60px"
           })]
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_dateCompare__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_components_dateCompare__WEBPACK_IMPORTED_MODULE_3__["default"], {
           value: pickDate
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_11__["default"], {
           md: 10,
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_companies__WEBPACK_IMPORTED_MODULE_4__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_components_companies__WEBPACK_IMPORTED_MODULE_4__["default"], {
+            prices: prices,
+            onSubmit: onSubmit
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
             className: "my-4",
             style: {
               margin: '0 -15px'
             },
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_11__["default"], {
               xs: 6,
               sm: 4
             })
           })]
         })]
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_secondFooter__WEBPACK_IMPORTED_MODULE_5__["default"], {})]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_components_secondFooter__WEBPACK_IMPORTED_MODULE_5__["default"], {})]
   });
 };
 
@@ -9717,13 +9740,13 @@ var Home = function Home(_ref) {
 
   var onSubmit = function onSubmit(values, _ref2) {
     var setSubmitting = _ref2.setSubmitting;
-    _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_6__.Inertia.post(nextStep, values);
+    _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_6__.Inertia.get(nextStep, values);
   };
 
   var mainForm = (0,formik__WEBPACK_IMPORTED_MODULE_5__.useFormik)({
     initialValues: {
-      fromAddress: "",
-      toAddress: "",
+      // fromAddress: "",
+      // toAddress: "",
       pickDate: null
     },
     onSubmit: onSubmit
@@ -9800,6 +9823,7 @@ var Home = function Home(_ref) {
           },
           name: "pickDate",
           placeholderText: "Please select a date",
+          minDate: new Date(),
           selected: mainForm.values.pickDate
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
           className: "header__form__btn primary-btn",
@@ -10291,11 +10315,13 @@ var Location = function Location(_ref) {
       toAddress = _ref.toAddress,
       pickDate = _ref.pickDate,
       items = _ref.items;
+  console.log({
+    items: items
+  });
 
   var onSubmit = function onSubmit(values, _ref2) {
     var setSubmitting = _ref2.setSubmitting;
-    console.log(values);
-    _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_7__.Inertia.post(nextStep, {
+    _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_7__.Inertia.get(nextStep, {
       items: items,
       fromAddress: values.fromAddress,
       toAddress: values.toAddress,
@@ -10574,10 +10600,10 @@ var MyItems = function MyItems(_ref) {
       setItems = _useState2[1];
 
   var Continue = function Continue(e) {
-    _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_4__.Inertia.post(nextStep, {
+    _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_4__.Inertia.get(nextStep, {
       items: items,
-      fromAddress: fromAddress,
-      toAddress: toAddress,
+      // fromAddress,
+      // toAddress,
       pickDate: pickDate
     });
   };
@@ -11309,33 +11335,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_company__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/company */ "./resources/js/components/company.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
 
-
-var Companies = function Companies() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([{
-    id: '1'
-  }]),
-      _useState2 = _slicedToArray(_useState, 1),
-      companiesData = _useState2[0];
-
+var Companies = function Companies(_ref) {
+  var prices = _ref.prices,
+      onSubmit = _ref.onSubmit;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-    children: companiesData.map(function (_ref) {
-      var id = _ref.id;
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_components_company__WEBPACK_IMPORTED_MODULE_1__["default"], {}, id);
+    children: prices.map(function (_ref2) {
+      var prices = _ref2.prices,
+          vendor = _ref2.vendor,
+          total = _ref2.total;
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_components_company__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        prices: prices,
+        total: total,
+        vendor: vendor,
+        onSubmit: onSubmit
+      }, vendor.id);
     })
   });
 };
@@ -11376,7 +11393,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var Company = function Company() {
+var Company = function Company(_ref) {
+  var total = _ref.total,
+      vendor = _ref.vendor,
+      prices = _ref.prices,
+      onSubmit = _ref.onSubmit;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
     className: "company mb-4",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
@@ -11387,9 +11408,9 @@ var Company = function Company() {
         alt: "company logo"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("span", {
         className: "comp__p1__moves",
-        children: ["moves", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
+        children: [vendor.username, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
           className: "d-block fw-bold",
-          children: "+365"
+          children: vendor.email
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
         className: "d-flex flex-row mt-4",
@@ -11542,35 +11563,24 @@ var Company = function Company() {
         })]
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-      className: "text-center",
+      className: "text-center d-flex flex-column align-items-center justify-content-center",
       md: 2,
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
-        style: {
-          color: 'var(--mentGreen)',
-          textDecoration: 'line-through'
-        },
-        children: "$563.25"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h4", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("h4", {
         style: {
           color: '#F7444E',
           fontWeight: 'bold'
         },
-        children: "$549.99"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
-        style: {
-          color: '#F7444E'
+        children: ["$", total]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+        onClick: function onClick() {
+          return onSubmit(vendor.id, total);
         },
-        children: "4 trucks left"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("a", {
-        href: "/checkout",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-          type: "button",
-          style: {
-            backgroundColor: '#0E3746'
-          },
-          variant: "dark",
-          children: "BOOK NOW"
-        })
+        type: "button",
+        style: {
+          backgroundColor: '#0E3746'
+        },
+        variant: "dark",
+        children: "BOOK NOW"
       })]
     })]
   });
@@ -11622,14 +11632,11 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var DateCompare = function DateCompare(_ref) {
   var value = _ref.value;
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(new Date()),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(new Date(value)),
       _useState2 = _slicedToArray(_useState, 2),
       date = _useState2[0],
       setDate = _useState2[1];
 
-  console.log({
-    date: date
-  });
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
     md: 2,
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {

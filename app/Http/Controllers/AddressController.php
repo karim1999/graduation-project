@@ -9,12 +9,12 @@ use Inertia\Inertia;
 class AddressController extends Controller
 {
     public function index(Request $request){
-        $boxes = Box::all();
+        $boxes = $request->input('items');
         $fromAddress = $request->input('fromAddress');
         $toAddress = $request->input('toAddress');
         $pickDate = $request->input('pickDate');
         return Inertia::render('location', [
-            "boxes" => $boxes,
+            "items" => $boxes,
             "fromAddress" => $fromAddress,
             "toAddress" => $toAddress,
             "pickDate" => $pickDate,
